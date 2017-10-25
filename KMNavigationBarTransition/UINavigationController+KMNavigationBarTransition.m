@@ -79,7 +79,12 @@
             disappearingViewController.navigationController.km_backgroundViewHidden = YES;
         }
     }
-    return [self km_pushViewController:viewController animated:animated];
+    [self km_pushViewController:viewController animated:animated];
+    // 修改tabBra的frame
+    CGRect frame = self.tabBarController.tabBar.frame;
+    frame.origin.y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
+    self.tabBarController.tabBar.frame = frame;
+    return;
 }
 
 - (UIViewController *)km_popViewControllerAnimated:(BOOL)animated {
